@@ -8,13 +8,11 @@ import (
 
 func TestParseCharterNumber(t *testing.T) {
 	charter := "RMR-UT-080"
-	name := "Blackhawk Cadet Squadron"
 
-	ucn, err := ParseCharterNumber(charter, name)
+	ucn, err := ParseCharterNumber(charter)
 	assert.NoError(t, err)
 
 	assert.Equal(t, RockyMountainRegion, ucn.Region())
 	assert.Equal(t, UTWG, ucn.Wing())
 	assert.Equal(t, uint(80), ucn.UnitNumber())
-	assert.Equal(t, name, ucn.UnitName())
 }
