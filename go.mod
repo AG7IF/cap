@@ -1,4 +1,4 @@
-module github.com/ag7if/cap
+module github.com/ag7if/cap/v2
 
 go 1.22.1
 

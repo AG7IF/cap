@@ -14,10 +14,9 @@ type UnitCharterNumber struct {
 	region     Region
 	wing       Wing
 	unitNumber uint
-	unitName   string
 }
 
-func ParseCharterNumber(charterNumber, unitName string) (UnitCharterNumber, error) {
+func ParseCharterNumber(charterNumber string) (UnitCharterNumber, error) {
 	res := charterRegex.FindStringSubmatch(charterNumber)
 	if len(res) < 4 {
 		return UnitCharterNumber{}, errors.Errorf("failed to parse charter number: %s", charterNumber)
@@ -39,7 +38,6 @@ func ParseCharterNumber(charterNumber, unitName string) (UnitCharterNumber, erro
 		region:     region,
 		wing:       wing,
 		unitNumber: uint(unitNumber),
-		unitName:   unitName,
 	}, nil
 }
 
@@ -53,10 +51,6 @@ func (h UnitCharterNumber) Wing() Wing {
 
 func (h UnitCharterNumber) UnitNumber() uint {
 	return h.unitNumber
-}
-
-func (h UnitCharterNumber) UnitName() string {
-	return h.unitName
 }
 
 func (h UnitCharterNumber) FullCharterNumber() string {
