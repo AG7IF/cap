@@ -13,6 +13,7 @@ const (
 	Cadet
 	CadetSponsor
 	AEM
+	StateLegislative
 	Legislative
 	Patron
 )
@@ -27,6 +28,8 @@ func ParseMemberType(s string) (MemberType, error) {
 		return CadetSponsor, nil
 	case "aem":
 		return AEM, nil
+	case "state leg":
+		return StateLegislative, nil
 	case "legislative":
 		return Legislative, nil
 	case "patron":
@@ -34,4 +37,25 @@ func ParseMemberType(s string) (MemberType, error) {
 	default:
 		return -1, errors.Errorf("unrecognized member type: %s", s)
 	}
+}
+
+func (m MemberType) String() string {
+	switch m {
+	case Senior:
+		return "SENIOR"
+	case Cadet:
+		return "CADET"
+	case CadetSponsor:
+		return "CADET SPONSOR"
+	case AEM:
+		return "AEM"
+	case StateLegislative:
+		return "STATE LEG"
+	case Legislative:
+		return "LEGISLATIVE"
+	case Patron:
+		return "PATRON"
+	}
+
+	panic(errors.Errorf("invalid MemberType value: %d", m))
 }
