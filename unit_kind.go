@@ -3,7 +3,8 @@ package cap
 type UnitKind int
 
 const (
-	Group UnitKind = iota
+	UnknownUnitKind UnitKind = iota
+	Group
 	Squadron
 	Flight
 )

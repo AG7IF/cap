@@ -3,7 +3,8 @@ package cap
 type UnitCategory int
 
 const (
-	AdminUnit UnitCategory = iota
+	UnknownUnitCategory UnitCategory = iota
+	AdminUnit
 	CompositeUnit
 	CadetUnit
 	SeniorUnit
