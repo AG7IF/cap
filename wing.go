@@ -1,6 +1,7 @@
 package cap
 
 import (
+	"database/sql/driver"
 	"strings"
 
 	"github.com/pkg/errors"
@@ -328,4 +329,37 @@ func (w Wing) String() string {
 	default:
 		panic(errors.Errorf("invalid wing code: %d", w))
 	}
+}
+
+func (w Wing) MarshalJSON() ([]byte, error) {
+	return []byte(w.String()), nil
+}
+
+func (w *Wing) UnmarshalJSON(raw []byte) error {
+	val, err := ParseWing(string(raw))
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	*w = val
+	return nil
+}
+
+func (w Wing) Value() (driver.Value, error) {
+	return []byte(w.String()), nil
+}
+
+func (w *Wing) Scan(raw any) error {
+	s, ok := raw.(string)
+	if !ok {
+		return errors.Errorf("scanned value is not a string: %v", raw)
+	}
+
+	val, err := ParseWing(s)
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	*w = val
+	return nil
 }

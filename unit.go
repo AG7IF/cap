@@ -1,5 +1,9 @@
 package cap
 
+import (
+	"fmt"
+)
+
 type Unit struct {
 	charterNumber UnitCharterNumber
 	kind          UnitKind
@@ -35,4 +39,12 @@ func (u Unit) Category() UnitCategory {
 
 func (u Unit) Name() string {
 	return u.name
+}
+
+func (u Unit) String() string {
+	if u.name == "" || u.kind == UnknownUnitKind || u.category == UnknownUnitCategory {
+		return u.charterNumber.String()
+	}
+
+	return fmt.Sprintf("%s %s %s (%s)", u.name, u.category, u.kind, u.charterNumber)
 }

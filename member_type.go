@@ -1,6 +1,7 @@
 package cap
 
 import (
+	"database/sql/driver"
 	"strings"
 
 	"github.com/pkg/errors"
@@ -58,4 +59,37 @@ func (m MemberType) String() string {
 	}
 
 	panic(errors.Errorf("invalid MemberType value: %d", m))
+}
+
+func (m MemberType) MarshalJSON() ([]byte, error) {
+	return []byte(m.String()), nil
+}
+
+func (m *MemberType) UnmarshalJSON(raw []byte) error {
+	val, err := ParseMemberType(string(raw))
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	*m = val
+	return nil
+}
+
+func (m MemberType) Value() (driver.Value, error) {
+	return []byte(m.String()), nil
+}
+
+func (m *MemberType) Scan(raw any) error {
+	s, ok := raw.(string)
+	if !ok {
+		return errors.Errorf("scanned value is not a string: %v", raw)
+	}
+
+	val, err := ParseMemberType(s)
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	*m = val
+	return nil
 }
