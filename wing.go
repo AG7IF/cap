@@ -202,6 +202,135 @@ func ParseWing(s string) (Wing, error) {
 	}
 }
 
+func (w Wing) Name() string {
+	switch w {
+	case ALWG:
+		return "Alabama Wing"
+	case AZWG:
+		return "Arizona Wing"
+	case ARWG:
+		return "Arkansas Wing"
+	case CAWG:
+		return "California Wing"
+	case COWG:
+		return "Colorado Wing"
+	case CTWG:
+		return "Connecticut Wing"
+	case DEWG:
+		return "Delaware Wing"
+	case FLWG:
+		return "Florida Wing"
+	case GAWG:
+		return "Georgia Wing"
+	case IDWG:
+		return "Idaho Wing"
+	case ILWG:
+		return "Illinois Wing"
+	case INWG:
+		return "Indiana Wing"
+	case IAWG:
+		return "Iowa Wing"
+	case KSWG:
+		return "Kansas Wing"
+	case KYWG:
+		return "Kentucky Wing"
+	case LAWG:
+		return "Louisiana Wing"
+	case MEWG:
+		return "Maine Wing"
+	case MDWG:
+		return "Maryland Wing"
+	case MAWG:
+		return "Massachusetts Wing"
+	case MIWG:
+		return "Michigan Wing"
+	case MNWG:
+		return "Minnesota Wing"
+	case MSWG:
+		return "Mississippi Wing"
+	case MOWG:
+		return "Missouri Wing"
+	case MTWG:
+		return "Montana Wing"
+	case DCWG:
+		return "National Capital Wing"
+	case NEWG:
+		return "Nebraska Wing"
+	case NVWG:
+		return "Nevada Wing"
+	case NHWG:
+		return "New Hampshire Wing"
+	case NJWG:
+		return "New Jersey Wing"
+	case NMWG:
+		return "New Mexico Wing"
+	case NYWG:
+		return "New York Wing"
+	case NCWG:
+		return "North Carolina Wing"
+	case NDWG:
+		return "North Dakota Wing"
+	case OHWG:
+		return "Ohio Wing"
+	case OKWG:
+		return "Oklahoma Wing"
+	case ORWG:
+		return "Oregon Wing"
+	case PAWG:
+		return "Pennsylvania Wing"
+	case RIWG:
+		return "Rhode Island Wing"
+	case SCWG:
+		return "South Carolina Wing"
+	case SDWG:
+		return "South Dakota Wing"
+	case TNWG:
+		return "Tennessee Wing"
+	case TXWG:
+		return "Texas Wing"
+	case UTWG:
+		return "Utah Wing"
+	case VTWG:
+		return "Vermont Wing"
+	case VAWG:
+		return "Virginia Wing"
+	case WAWG:
+		return "Washington Wing"
+	case WVWG:
+		return "West Virginia Wing"
+	case WIWG:
+		return "Wisconsin Wing"
+	case WYWG:
+		return "Wyoming Wing"
+	case AKWG:
+		return "Alaska Wing"
+	case HIWG:
+		return "Hawaii Wing"
+	case PRWG:
+		return "Puerto Rico Wing"
+	case NER:
+		return "North East Region"
+	case MAR:
+		return "Mid-Atlantic Region"
+	case GLR:
+		return "Great Lakes Region"
+	case SER:
+		return "Southeast Region"
+	case NCR:
+		return "North Central Region"
+	case SWR:
+		return "Southwest Region"
+	case RMR:
+		return "Rocky Mountain Region"
+	case PCR:
+		return "Pacific Region"
+	case NHQ:
+		return "National Headquarters"
+	default:
+		return ""
+	}
+}
+
 func (w Wing) String() string {
 	switch w {
 	case ALWG:
@@ -327,7 +456,7 @@ func (w Wing) String() string {
 	case NHQ:
 		return "NHQ"
 	default:
-		panic(errors.Errorf("invalid wing code: %d", w))
+		return ""
 	}
 }
 

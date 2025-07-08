@@ -42,6 +42,10 @@ func (u Unit) Name() string {
 }
 
 func (u Unit) String() string {
+	if u.charterNumber.UnitNumber() == 1 {
+		return fmt.Sprintf("%s (%s)", u.charterNumber.Wing().Name(), u.kind)
+	}
+
 	if u.name == "" || u.kind == UnknownUnitKind || u.category == UnknownUnitCategory {
 		return u.charterNumber.String()
 	}

@@ -183,7 +183,7 @@ func (g Grade) String() string {
 	case MajGen:
 		return "Maj Gen"
 	default:
-		panic(errors.Errorf("invalid value for grade: %d", g))
+		return ""
 	}
 }
 
@@ -254,7 +254,7 @@ func (g Grade) ExtAbbv() string {
 	case MajGen:
 		return "Maj. Gen."
 	default:
-		panic(errors.Errorf("invalid grade value: %d", g))
+		return ""
 	}
 }
 

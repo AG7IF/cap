@@ -67,7 +67,7 @@ func (r Region) String() string {
 	case NationalHeadquarters:
 		return "NHQ"
 	default:
-		panic(errors.Errorf("invalid region code: %d", r))
+		return ""
 	}
 }
 

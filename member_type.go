@@ -56,9 +56,9 @@ func (m MemberType) String() string {
 		return "LEGISLATIVE"
 	case Patron:
 		return "PATRON"
+	default:
+		return ""
 	}
-
-	panic(errors.Errorf("invalid MemberType value: %d", m))
 }
 
 func (m MemberType) MarshalJSON() ([]byte, error) {
